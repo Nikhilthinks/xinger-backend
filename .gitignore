@@ -1,6 +1,8 @@
 <<<<<<< HEAD
 **/node_modules
 /node_modules
+.github
+/.github
 ||||||| merged common ancestors
 =======
 Skip to content
