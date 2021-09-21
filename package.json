@@ -1,0 +1,46 @@
+{
+  "name": "practicesocial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Nikhil",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.0",
+    "bootstrap-react": "^0.3.1",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "gravatar": "^1.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.25",
+    "node": "^16.6.0",
+    "passport": "^0.4.1",
+    "pm2": "^4.5.6",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikhilthinks/scoutoutsocial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nikhilthinks/scoutoutsocial/issues"
+  },
+  "homepage": "https://github.com/Nikhilthinks/scoutoutsocial#readme"
+}
