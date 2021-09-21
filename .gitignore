@@ -45,7 +45,7 @@ Latest commit e8edc2b 2 minutes ago
 
 # dependencies
 /node_modules
-package-lock.json
+# package-lock.json
 
 # IDEs and editors
 /.idea
