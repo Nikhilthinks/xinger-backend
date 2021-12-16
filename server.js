@@ -2,6 +2,10 @@ const express = require("express");
 const connectDB = require("./config/db");
 var cors = require("cors");
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 connectDB();
 
 const app = express();
@@ -43,6 +47,9 @@ app.use("/api/tourpackage", require("./routes/api/tourpackage"));
 app.use("/api/backpack", require("./routes/api/backpack"));
 app.use("/api/packages", require("./routes/api/packages"));
 app.use("/api/filter", require("./routes/api/filter"));
+
+console.log('ENV',process.env.NODE_ENV);
+debugger;
 
 const PORT = process.env.PORT || 5500;
 
