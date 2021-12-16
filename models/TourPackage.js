@@ -7,39 +7,44 @@ const PackageSchema = new mongoose.Schema({
     productName: {
         type: String
     },
+
     productDetails: {
         type: String
     },
 
     tripDate: {
-        type: String
+        type: Date
+    },
+    tripEndDate: {
+        type: Date
     },
 
     price: {
         type: String
     },
+
     sellerName: {
         type: String
     },
+
     uploadDate: {
         type: Date,
         default: Date.now
     },
     
     bookings : {
-    type: Number,
-    default: 0
+        type: Number,
+        default: 0
     },
 
     visited: {    
-    type: Number,
-    default: 0
+        type: Number,
+        default: 0
     },
-
-    price: {
-        type: Number
+    purchased: {
+        type: Boolean,
+        default: false
     }
-
 })
 
 module.exports = Package = mongoose.model("Package Details", PackageSchema)
