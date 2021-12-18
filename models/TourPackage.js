@@ -44,7 +44,7 @@ const PackageSchema = new mongoose.Schema({
     purchased: {
         type: Boolean,
         default: false
-    }
+    },
 })
 
 module.exports = Package = mongoose.model("Package Details", PackageSchema)
