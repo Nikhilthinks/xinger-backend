@@ -16,7 +16,7 @@ router.post(
       min: 6,
     }),
     check("username", "Use a unique username for unique you.").not().isEmpty(),
-    // check("roles", "Select an account type").not().isEmpty(),
+    check("gender","Please Enter your gender").not().isEmpty(),
   ],
   async (req, res) => {
     // console.log(req.body);
@@ -25,7 +25,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email , username, password } = req.body;
+    const { name, email , username, password, gender } = req.body;
 
     try {
       let user = await User.findOne({ email, username });
@@ -48,6 +48,7 @@ router.post(
         username: username.toLowerCase(),
         avatar,
         password,
+        gender
         // roles,
       });
 

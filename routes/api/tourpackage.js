@@ -2,23 +2,23 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 
-const Tour = require("../../models/TourPackage");
+const SalonService = require("../../models/SalonService");
 const User = require("../../models/User"); 
 
 router.post('/add', auth, async (req,res) => {
     try {
         const user = await User.findById(req.user.id).select("-password");
-        const tour = new Tour ({
+        const salonService = new SalonService ({
             sellerId: req.user.id,
-            productName: req.body.productName,
-            productDetails: req.body.productDetails,
+            serviceName: req.body.serviceName,
+            serviceCategory: req.body.serviceCategory,
+            serviceDescription: req.body.serviceDescription,
             price: req.body.price,
             sellerName: user.name.toLowerCase()
-
             // Remove tolowerCase() as we have already used it while creating the users
         });
-        const newTour = await tour.save();
-        return res.json(newTour)
+        const newSalonService = await salonService.save();
+        return res.json(newSalonService)
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Fucked Up");
