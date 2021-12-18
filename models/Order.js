@@ -30,7 +30,9 @@ const OrderSchema = new Schema({
     packageId: { 
         typeof: Schema.Types.ObjectId,
     },
-
+    rzpObject: {
+        type: Object
+    },
     date: {
         type: Date,
         default: Date.now,

@@ -5,7 +5,7 @@ const Order = require("../../models/Order");
 const TourPackage = require("../../models/TourPackage");
 const User = require("../../models/User");
 const {validationResult } = require("express-validator/check");
-
+const razorpayInstance = require("../../config/rzp")
 
 router.get('/', async(req, res) => {
     try {
@@ -54,12 +54,28 @@ router.post('/:tourid/buy', auth, async(req,res) => {
             buyerId: req.user.id,
             username: req.user.username,
         })
-        await order.save()
-        tourPackage.purchased = true;
-        tourPackage.bookings = tourPackage.bookings + 1;
-        await tourPackage.save();
-        console.log('tourPackage: ',tourPackage);
-        return res.json(order);
+
+        amount = tourPackage.price;
+        const currency = 'INR';
+
+
+        razorpayInstance.orders.create({amount, currency}, 
+          async (err, rzpOrder)=>{
+            
+            if(!err) {
+              order.rzpObject = rzpOrder;
+              tourPackage.purchased = true;
+              tourPackage.bookings = tourPackage.bookings + 1;
+              await order.save()
+              await tourPackage.save();
+              console.log('tourPackage: ',tourPackage);
+              return res.json(order)
+            } else {
+              res.send(err);
+
+            }
+          }
+      )
 
     } catch (err) {
       console.error(err.message);
